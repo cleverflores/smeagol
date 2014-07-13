@@ -20,6 +20,36 @@ return array(
                     ),
                 ),
             ),
+            'auth' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route' => '/auth',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Auth',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+            'logout' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route' => '/logout',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Auth',
+                        'action' => 'logout',
+                    ),
+                ),
+            ),
+            'login' => array(
+                    'type' => 'Zend\Mvc\Router\Http\Literal',
+                    'options' => array(
+                            'route'    => '/login',
+                            'defaults' => array(
+                                    'controller' => 'Application\Controller\Auth',
+                                    'action'     => 'login',
+                            ),
+                    ),  
+            ),  
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
@@ -73,7 +103,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Controller\Auth' => 'Application\Controller\AuthController',
         ),
     ),
     'view_manager' => array(
@@ -89,7 +120,8 @@ return array(
             'error/index' => __DIR__ . '/../view/error/index.phtml',
         ),
         'template_path_stack' => array(
-            __DIR__ . '/../view',
+            __DIR__ . '/../../../themes',
+            'application' => __DIR__ . '/../view',
         ),
     ),
     // agregar este bloque
@@ -97,7 +129,18 @@ return array(
     'asset_manager' => array(
         'resolver_configs' => array(
             'paths' => array(
-                __DIR__ . '/../public',
+                __DIR__ . '/../public', // public del module Application
+                __DIR__ . '/../../../themes/enterprise/css/images',
+            ),
+            // este mapeo puede ser dinamico desde base de datos o recorriendo el directorio
+            'map' => array(
+                'themes/enterprise/css/style.css' => __DIR__ . '/../../../themes/enterprise/css/style.css',
+                'themes/enterprise/css/ie6.css' => __DIR__ . '/../../../themes/enterprise/css/ie6.css',
+                'themes/enterprise/js/jquery-1.4.2.js' => __DIR__ . '/../../../themes/enterprise/js/jquery-1.4.2.js',
+                'themes/enterprise/js/jquery.jcarousel.js' => __DIR__ . '/../../../themes/enterprise/js/jquery.jcarousel.js',
+                'themes/enterprise/js/jquery.pngFix.js' => __DIR__ . '/../../../themes/enterprise/js/jquery.pngFix.js',
+                'themes/enterprise/js/js-fnc.js' => __DIR__ . '/../../../themes/enterprise/js/js-fnc.js',
+                'js/login.js' => __DIR__ . '/../public/login.js',   			
             ),
         ),
         'caching' => array(
