@@ -18,6 +18,8 @@ use Smeagol\Model\Node;
 use Smeagol\Model\NodeTable;
 use Smeagol\Model\User;
 use Smeagol\Model\UserTable;
+use Smeagol\Model\Menu;
+use Smeagol\Model\MenuTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Authentication\AuthenticationService;
@@ -27,16 +29,24 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface {
     public function onBootstrap(MvcEvent $e) {
         $e->getApplication()->getServiceManager()->get('translator');
         $eventManager = $e->getApplication()->getEventManager();
+        $app = $e->getApplication();
+        $sm = $app->getServiceManager();
+
+        $alias = $sm->get('Application\Router\Alias');
+        $nodeTable = $sm->get('Smeagol\Model\NodeTable');
+        $alias->setNodeTable($nodeTable);
+
+   
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
         $eventManager->attach('route', function($e) {
             // verificando si el usuario esta logueado
             $auth = new AuthenticationService();
             $is_login = false;
-            if (!$auth->hasIdentity()) {
+            if ($auth->hasIdentity()) {
                 $is_login = true;
             }
-            
+
             // validamos si entramos en el index del portal
             $is_front = false;
             // obtenemos la ruta del request
@@ -72,6 +82,10 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface {
     public function getServiceConfig() {
         return array(
             'factories' => array(
+                'Application\Router\Alias' => function($sm) {
+            $alias = new \Application\Router\Alias('/node[/:id]');
+            return $alias;
+        },
                 'Smeagol\Model\NodeTable' => function($sm) {
             $tableGateway = $sm->get('NodeTableGateway');
             $table = new NodeTable($tableGateway);
@@ -93,6 +107,17 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface {
             $resultSetPrototype = new ResultSet();
             $resultSetPrototype->setArrayObjectPrototype(new User());
             return new TableGateway('user', $dbAdapter, null, $resultSetPrototype);
+        },
+                'Smeagol\Model\MenuTable' => function($sm) {
+            $tableGateway = $sm->get('MenuTableGateway');
+            $table = new MenuTable($tableGateway);
+            return $table;
+        },
+                'MenuTableGateway' => function ($sm) {
+            $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+            $resultSetPrototype = new ResultSet();
+            $resultSetPrototype->setArrayObjectPrototype(new Menu());
+            return new TableGateway('menu', $dbAdapter, null, $resultSetPrototype);
         },
             ),
         );
