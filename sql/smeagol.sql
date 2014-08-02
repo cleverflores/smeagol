@@ -1,64 +1,76 @@
--- MySQL dump 10.13  Distrib 5.5.36, for Win32 (x86)
+-- phpMyAdmin SQL Dump
+-- version 4.1.12
+-- http://www.phpmyadmin.net
 --
--- Host: localhost    Database: smeagol
--- ------------------------------------------------------
--- Server version	5.5.36
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 03-08-2014 a las 00:26:30
+-- Versión del servidor: 5.5.36
+-- Versión de PHP: 5.4.27
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `smeagol`
+-- Base de datos: `smeagol`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `smeagol` /*!40100 DEFAULT CHARACTER SET latin1 */;
-
-USE `smeagol`;
+-- --------------------------------------------------------
 
 --
--- Table structure for table `menu`
+-- Estructura de tabla para la tabla `menu`
 --
 
-DROP TABLE IF EXISTS `menu`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `menu` (
+CREATE TABLE IF NOT EXISTS `menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT NULL,
+  `label` varchar(150) DEFAULT NULL,
+  `url` varchar(250) DEFAULT NULL,
   `parent_id` int(11) NOT NULL DEFAULT '0',
   `order_id` int(11) NOT NULL DEFAULT '0',
-  `node_id` int(11) NOT NULL,
+  `node_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_menu_node1_idx` (`node_id`),
-  CONSTRAINT `fk_menu_node1` FOREIGN KEY (`node_id`) REFERENCES `node` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  KEY `fk_menu_node1_idx` (`node_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 --
--- Dumping data for table `menu`
+-- Volcado de datos para la tabla `menu`
 --
 
-LOCK TABLES `menu` WRITE;
-/*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-/*!40000 ALTER TABLE `menu` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `menu` (`id`, `name`, `label`, `url`, `parent_id`, `order_id`, `node_id`) VALUES
+(1, 'default', NULL, NULL, 0, 0, NULL),
+(2, 'admin', NULL, NULL, 0, 0, NULL),
+(3, NULL, 'Inicio', '/', 1, 0, NULL),
+(4, NULL, 'Nosotros', NULL, 1, 1, 1),
+(5, NULL, 'Servicios', NULL, 1, 2, 5),
+(6, NULL, 'Programación web', NULL, 5, 0, 4),
+(7, NULL, 'Desarrollo de Portales', NULL, 5, 1, 6),
+(8, NULL, 'Soluciones', NULL, 1, 3, 7),
+(9, NULL, 'Soporte', NULL, 1, 4, 8),
+(10, NULL, 'Contáctenos', NULL, 1, 5, 9),
+(11, NULL, 'Dashboard', 'admin', 2, 0, NULL),
+(12, NULL, 'Contenido', 'admin/page', 2, 1, NULL),
+(13, NULL, 'Noticias', 'admin/noticias', 2, 2, NULL),
+(14, NULL, 'Menus', 'admin/menus', 2, 3, NULL),
+(15, NULL, 'Temas', 'admin/themes', 2, 4, NULL),
+(16, NULL, 'Usuarios', 'admin/users', 2, 5, NULL),
+(17, NULL, 'Permisos', 'admin/permissions', 16, 0, NULL),
+(18, NULL, 'Roles', 'admin/roles', 17, 0, NULL),
+(19, NULL, 'Smeagol CMS', NULL, 7, 0, 10),
+(20, NULL, 'Drupal CMS', NULL, 7, 1, 11);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `node`
+-- Estructura de tabla para la tabla `node`
 --
 
-DROP TABLE IF EXISTS `node`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `node` (
+CREATE TABLE IF NOT EXISTS `node` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(250) NOT NULL,
   `content` text NOT NULL,
@@ -69,78 +81,111 @@ CREATE TABLE `node` (
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_node_node_type1_idx` (`node_type_id`),
-  KEY `fk_node_user1_idx` (`user_id`),
-  CONSTRAINT `fk_node_node_type1` FOREIGN KEY (`node_type_id`) REFERENCES `node_type` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_node_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  KEY `fk_node_user1_idx` (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
--- Dumping data for table `node`
+-- Volcado de datos para la tabla `node`
 --
 
-LOCK TABLES `node` WRITE;
-/*!40000 ALTER TABLE `node` DISABLE KEYS */;
-INSERT INTO `node` VALUES (1,'Nosotros','<p><strong>Smeagol CMS, un</strong><img alt=\"\" src=\"/files/fotos/puesta-de-sol.jpg\" style=\"float:left; height:141px; margin-left:3px; margin-right:3px; width:188px\" /><strong> demo de desarrolado en Zend Framework 2</strong></p>\r\n\r\n<p>Nosotros somos hinchas de Zend Framework 2</p>\r\n\r\n<p>asd</p>\r\n\r\n<p>a</p>\r\n\r\n<p>sd</p>\r\n\r\n<p>asd</p>\r\n\r\n<p>asd</p>\r\n','nosotros','2014-07-01 20:47:24','2014-07-15 22:10:47',1,1),(2,'Smeagol primer CMS en ZF2','haber si funca','noticias/smeagol-primer-cms-en-zf2','2014-07-01 20:47:24',NULL,2,1),(3,'El mundial Brasil 2014 esta que quema','ELl mundial esta super emocionante','noticias/mundialsuper-emocionante','2014-07-01 20:47:24',NULL,2,1),(4,'Programación Web','<p>Somos unos tigres del PHP y dem&aacute;s hierbas</p>\r\n','page/programacion-web','2014-07-10 22:47:08','2014-07-10 22:47:08',1,1);
-/*!40000 ALTER TABLE `node` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `node` (`id`, `title`, `content`, `url`, `created`, `modified`, `node_type_id`, `user_id`) VALUES
+(1, 'Nosotros', '<p><strong>Smeagol CMS, un</strong><strong>&nbsp;demo de desarrolado en Zend Framework 2</strong></p>\r\n\r\n<p>Nosotros somos hinchas de Zend Framework 2</p>\r\n\r\n<p>Gurus del php&nbsp;</p>\r\n\r\n<p>que deasrrollamos aplicaciones alucinantes</p>\r\n', 'nosotros', '2014-07-01 20:47:24', '2014-07-17 13:56:17', 1, 1),
+(2, 'Smeagol primer CMS en ZF2', 'haber si funca', 'noticias/smeagol-primer-cms-en-zf2', '2014-07-01 20:47:24', NULL, 2, 1),
+(3, 'El mundial Brasil 2014 esta que quema', 'ELl mundial esta super emocionante', 'noticias/mundialsuper-emocionante', '2014-07-01 20:47:24', NULL, 2, 1),
+(4, 'Programación Web', '<p>Somos unos tigres del PHP y dem&aacute;s hierbas</p>\r\n', 'servicios/programacion-web', '2014-07-10 22:47:08', '2014-07-17 13:50:46', 1, 1),
+(5, 'Servicios', '<p>Somos Expertos Programadores y le ofrecemos los siguientes servicios</p>\r\n\r\n<p><a href="/servicios/programacion-web">Programaci&oacute;n web</a>&nbsp;</p>\r\n\r\n<p><a href="/servicios/desarrollo-de-portales">Desarrollo de Portales</a></p>\r\n', 'servicios', '2014-07-17 13:50:18', '2014-07-17 13:50:18', 1, 1),
+(6, 'Desarrollo de Portales', '<p>Creamos portales con smeagol y drupal&nbsp;</p>\r\n', 'servicios/desarrollo-de-portales', '2014-07-17 13:52:35', '2014-07-17 13:52:35', 1, 1),
+(7, 'Soluciones', '<p>Hacemos desarrollo de software a medida y contamos con las siguientes soluciones</p>\r\n\r\n<p><a href="/soluciones/smeagolcms">Smeagol CMS</a></p>\r\n\r\n<p><a href="/soluciones/intranets">Intranets</a></p>\r\n', 'soluciones/intranets', '2014-07-17 13:54:35', '2014-07-17 13:54:35', 1, 1),
+(8, 'Soporte', '<p>Brindamos el mejor soporte al mejor precio</p>\r\n\r\n<p>en planes</p>\r\n\r\n<p>8x5</p>\r\n\r\n<p>24x7</p>\r\n', 'soporte', '2014-07-17 13:58:17', '2014-07-17 13:58:17', 1, 1),
+(9, 'Contactenos', '<p>Cont&aacute;ctenos y no se arrepentir&aacute;</p>\r\n\r\n<p>al fono &nbsp;666-666-666</p>\r\n', 'contactenos', '2014-07-17 13:59:13', '2014-07-17 13:59:13', 1, 1),
+(10, 'Smeagol', '<h1>El mejor CMS en Zend Frammework 2  :D</h1>', 'servicios/desarrollo-de-portales/smeagol', '2014-07-22 08:05:00', NULL, 1, 1),
+(11, 'Drupal 7', '<h1> El Mejor CMS del mundo</h1>\r\n<h2> Que lo usa hasta el tío Obama<h2>', 'servicios/desarrollo-de-portales/drupal', '2014-07-22 08:05:00', NULL, 1, 1);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `node_type`
+-- Estructura de tabla para la tabla `node_type`
 --
 
-DROP TABLE IF EXISTS `node_type`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `node_type` (
+CREATE TABLE IF NOT EXISTS `node_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `node_type`
+-- Volcado de datos para la tabla `node_type`
 --
 
-LOCK TABLES `node_type` WRITE;
-/*!40000 ALTER TABLE `node_type` DISABLE KEYS */;
-INSERT INTO `node_type` VALUES (1,'page'),(2,'notice');
-/*!40000 ALTER TABLE `node_type` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `node_type` (`id`, `name`) VALUES
+(1, 'page'),
+(2, 'notice');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `role`
+-- Estructura de tabla para la tabla `resource`
 --
 
-DROP TABLE IF EXISTS `role`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `role` (
+CREATE TABLE IF NOT EXISTS `resource` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `path` varchar(250) DEFAULT NULL,
+  `description` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Volcado de datos para la tabla `resource`
+--
+
+INSERT INTO `resource` (`id`, `path`, `description`) VALUES
+(1, 'node/*', 'Todos los contenidos públicos, por defecto solo lectura'),
+(2, 'admin/*', 'Acceso Total al módulo de Administración'),
+(3, 'application/index/index', 'Acceso al Home');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `role`
+--
+
+CREATE TABLE IF NOT EXISTS `role` (
   `type` varchar(30) NOT NULL,
   `description` varchar(250) NOT NULL,
   PRIMARY KEY (`type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `role`
+-- Volcado de datos para la tabla `role`
 --
 
-LOCK TABLES `role` WRITE;
-/*!40000 ALTER TABLE `role` DISABLE KEYS */;
-INSERT INTO `role` VALUES ('admin','Admin User'),('editor','User with rol of editor'),('user','Every Authenticate User');
-/*!40000 ALTER TABLE `role` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `role` (`type`, `description`) VALUES
+('admin', 'Admin User'),
+('editor', 'User with rol of editor'),
+('guest', 'Usuario Anónimo que visita la web'),
+('user', 'Every Authenticate User');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Estructura de tabla para la tabla `role_resource`
 --
 
-DROP TABLE IF EXISTS `user`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user` (
+CREATE TABLE IF NOT EXISTS `role_resource` (
+  `role_type` varchar(30) NOT NULL,
+  `resource_id` int(11) NOT NULL,
+  PRIMARY KEY (`role_type`,`resource_id`),
+  KEY `fk_role_has_resource_resource1_idx` (`resource_id`),
+  KEY `fk_role_has_resource_role1_idx` (`role_type`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
   `password` varchar(32) NOT NULL,
@@ -152,28 +197,46 @@ CREATE TABLE `user` (
   `modified` datetime DEFAULT NULL,
   `role_type` varchar(30) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_user_role_idx` (`role_type`),
-  CONSTRAINT `fk_user_role` FOREIGN KEY (`role_type`) REFERENCES `role` (`type`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  KEY `fk_user_role_idx` (`role_type`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `user`
+-- Volcado de datos para la tabla `user`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'admin','c6865cf98b133f1f3de596a4a2894630','Admin','of Universe','tucorreo@gmail.com',1,NULL,'2014-07-01 20:47:24','admin');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `user` (`id`, `username`, `password`, `name`, `surname`, `email`, `active`, `last_login`, `modified`, `role_type`) VALUES
+(1, 'admin', 'c6865cf98b133f1f3de596a4a2894630', 'Admin', 'of Universe', 'tucorreo@gmail.com', 1, NULL, '2014-07-01 20:47:24', 'admin');
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `menu`
+--
+ALTER TABLE `menu`
+  ADD CONSTRAINT `fk_menu_node1` FOREIGN KEY (`node_id`) REFERENCES `node` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `node`
+--
+ALTER TABLE `node`
+  ADD CONSTRAINT `fk_node_node_type1` FOREIGN KEY (`node_type_id`) REFERENCES `node_type` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_node_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `role_resource`
+--
+ALTER TABLE `role_resource`
+  ADD CONSTRAINT `fk_role_has_resource_resource1` FOREIGN KEY (`resource_id`) REFERENCES `resource` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_role_has_resource_role1` FOREIGN KEY (`role_type`) REFERENCES `role` (`type`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `fk_user_role` FOREIGN KEY (`role_type`) REFERENCES `role` (`type`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2014-07-15 22:53:13
