@@ -43,7 +43,7 @@ class NodeTable {
         $rowset = $this->tableGateway->select(array('url' => $url));
         $row = $rowset->current();
         if (!$row) {
-           return array();
+            return array();
         }
         return $row;
     }

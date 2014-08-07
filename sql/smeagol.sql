@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-08-2014 a las 00:26:30
+-- Tiempo de generación: 05-08-2014 a las 22:51:14
 -- Versión del servidor: 5.5.36
 -- Versión de PHP: 5.4.27
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `node_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_menu_node1_idx` (`node_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
 
 --
 -- Volcado de datos para la tabla `menu`
@@ -59,8 +59,8 @@ INSERT INTO `menu` (`id`, `name`, `label`, `url`, `parent_id`, `order_id`, `node
 (14, NULL, 'Menus', 'admin/menus', 2, 3, NULL),
 (15, NULL, 'Temas', 'admin/themes', 2, 4, NULL),
 (16, NULL, 'Usuarios', 'admin/users', 2, 5, NULL),
-(17, NULL, 'Permisos', 'admin/permissions', 16, 0, NULL),
-(18, NULL, 'Roles', 'admin/roles', 17, 0, NULL),
+(17, NULL, 'Permisos', 'admin/permissions', 16, 1, NULL),
+(18, NULL, 'Roles', 'admin/roles', 16, 0, NULL),
 (19, NULL, 'Smeagol CMS', NULL, 7, 0, 10),
 (20, NULL, 'Drupal CMS', NULL, 7, 1, 11);
 
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `node` (
   PRIMARY KEY (`id`),
   KEY `fk_node_node_type1_idx` (`node_type_id`),
   KEY `fk_node_user1_idx` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Volcado de datos para la tabla `node`
@@ -91,11 +91,11 @@ CREATE TABLE IF NOT EXISTS `node` (
 INSERT INTO `node` (`id`, `title`, `content`, `url`, `created`, `modified`, `node_type_id`, `user_id`) VALUES
 (1, 'Nosotros', '<p><strong>Smeagol CMS, un</strong><strong>&nbsp;demo de desarrolado en Zend Framework 2</strong></p>\r\n\r\n<p>Nosotros somos hinchas de Zend Framework 2</p>\r\n\r\n<p>Gurus del php&nbsp;</p>\r\n\r\n<p>que deasrrollamos aplicaciones alucinantes</p>\r\n', 'nosotros', '2014-07-01 20:47:24', '2014-07-17 13:56:17', 1, 1),
 (2, 'Smeagol primer CMS en ZF2', 'haber si funca', 'noticias/smeagol-primer-cms-en-zf2', '2014-07-01 20:47:24', NULL, 2, 1),
-(3, 'El mundial Brasil 2014 esta que quema', 'ELl mundial esta super emocionante', 'noticias/mundialsuper-emocionante', '2014-07-01 20:47:24', NULL, 2, 1),
+(3, 'El mundial Brasil 2014 esta que quema', 'El mundial esta super emocionante', 'noticias/mundialsuper-emocionante', '2014-07-01 20:47:24', NULL, 2, 1),
 (4, 'Programación Web', '<p>Somos unos tigres del PHP y dem&aacute;s hierbas</p>\r\n', 'servicios/programacion-web', '2014-07-10 22:47:08', '2014-07-17 13:50:46', 1, 1),
 (5, 'Servicios', '<p>Somos Expertos Programadores y le ofrecemos los siguientes servicios</p>\r\n\r\n<p><a href="/servicios/programacion-web">Programaci&oacute;n web</a>&nbsp;</p>\r\n\r\n<p><a href="/servicios/desarrollo-de-portales">Desarrollo de Portales</a></p>\r\n', 'servicios', '2014-07-17 13:50:18', '2014-07-17 13:50:18', 1, 1),
 (6, 'Desarrollo de Portales', '<p>Creamos portales con smeagol y drupal&nbsp;</p>\r\n', 'servicios/desarrollo-de-portales', '2014-07-17 13:52:35', '2014-07-17 13:52:35', 1, 1),
-(7, 'Soluciones', '<p>Hacemos desarrollo de software a medida y contamos con las siguientes soluciones</p>\r\n\r\n<p><a href="/soluciones/smeagolcms">Smeagol CMS</a></p>\r\n\r\n<p><a href="/soluciones/intranets">Intranets</a></p>\r\n', 'soluciones/intranets', '2014-07-17 13:54:35', '2014-07-17 13:54:35', 1, 1),
+(7, 'Soluciones', '<p><img alt="" src="/files/fotos/puesta-de-sol.jpg" style="float:left; height:141px; width:188px" />Hacemos desarrollo de software a medida y contamos con las siguientes soluciones</p>\r\n\r\n<p><a href="/soluciones/smeagolcms">Smeagol CMS</a></p>\r\n\r\n<p><a href="/soluciones/intranets">Intranets</a></p>\r\n', 'soluciones/intranets', '2014-07-17 13:54:35', '2014-08-03 19:41:00', 1, 1),
 (8, 'Soporte', '<p>Brindamos el mejor soporte al mejor precio</p>\r\n\r\n<p>en planes</p>\r\n\r\n<p>8x5</p>\r\n\r\n<p>24x7</p>\r\n', 'soporte', '2014-07-17 13:58:17', '2014-07-17 13:58:17', 1, 1),
 (9, 'Contactenos', '<p>Cont&aacute;ctenos y no se arrepentir&aacute;</p>\r\n\r\n<p>al fono &nbsp;666-666-666</p>\r\n', 'contactenos', '2014-07-17 13:59:13', '2014-07-17 13:59:13', 1, 1),
 (10, 'Smeagol', '<h1>El mejor CMS en Zend Frammework 2  :D</h1>', 'servicios/desarrollo-de-portales/smeagol', '2014-07-22 08:05:00', NULL, 1, 1),
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `node_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `node_type`
@@ -124,24 +124,28 @@ INSERT INTO `node_type` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `resource`
+-- Estructura de tabla para la tabla `permission`
 --
 
-CREATE TABLE IF NOT EXISTS `resource` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `path` varchar(250) DEFAULT NULL,
-  `description` varchar(250) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+CREATE TABLE IF NOT EXISTS `permission` (
+  `resource` varchar(250) NOT NULL,
+  `description` varchar(250) NOT NULL,
+  PRIMARY KEY (`resource`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `resource`
+-- Volcado de datos para la tabla `permission`
 --
 
-INSERT INTO `resource` (`id`, `path`, `description`) VALUES
-(1, 'node/*', 'Todos los contenidos públicos, por defecto solo lectura'),
-(2, 'admin/*', 'Acceso Total al módulo de Administración'),
-(3, 'application/index/index', 'Acceso al Home');
+INSERT INTO `permission` (`resource`, `description`) VALUES
+('mvc:admin.*', 'Acceso total al módulo de administración'),
+('mvc:admin.index.index', 'Acceso al Dashboard del Admin'),
+('mvc:admin.page.*', 'Acceso total para crear, editar, borrar páginas estáticas de cualquier usuario'),
+('mvc:admin.page.add', 'Crear páginas estáticas'),
+('mvc:admin.page.delete:owner', 'Borrar páginas estáticas que sean propiedad del usuario'),
+('mvc:admin.page.edit:owner', 'Editar páginas estáticas que sean propiedad del usuario'),
+('mvc:admin.page.index', 'Acceso al listado de páginas estáticas'),
+('mvc:application.*', 'Acceso total al módulo público');
 
 -- --------------------------------------------------------
 
@@ -153,31 +157,49 @@ CREATE TABLE IF NOT EXISTS `role` (
   `type` varchar(30) NOT NULL,
   `description` varchar(250) NOT NULL,
   PRIMARY KEY (`type`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `role`
 --
 
 INSERT INTO `role` (`type`, `description`) VALUES
-('admin', 'Admin User'),
-('editor', 'User with rol of editor'),
-('guest', 'Usuario Anónimo que visita la web'),
-('user', 'Every Authenticate User');
+('admin', 'Usuarios Administradores, todos los permisos'),
+('editor', 'Usuarios con el rol de editor, por defecto puede crear, editar y borrar todos los contenidos'),
+('guest', 'Usuarios anónimos, por defecto pueden acceder a todos los contenidos'),
+('member', 'Usuarios Autenticados, por defecto pueden editar su propio contenido');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `role_resource`
+-- Estructura de tabla para la tabla `role_permission`
 --
 
-CREATE TABLE IF NOT EXISTS `role_resource` (
+CREATE TABLE IF NOT EXISTS `role_permission` (
   `role_type` varchar(30) NOT NULL,
-  `resource_id` int(11) NOT NULL,
-  PRIMARY KEY (`role_type`,`resource_id`),
-  KEY `fk_role_has_resource_resource1_idx` (`resource_id`),
-  KEY `fk_role_has_resource_role1_idx` (`role_type`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `permission_resource` varchar(250) NOT NULL,
+  PRIMARY KEY (`role_type`,`permission_resource`),
+  KEY `fk_role_permission_role1_idx` (`role_type`),
+  KEY `fk_role_permission_permission1_idx` (`permission_resource`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `role_permission`
+--
+
+INSERT INTO `role_permission` (`role_type`, `permission_resource`) VALUES
+('admin', 'mvc:admin.*'),
+('admin', 'mvc:application.*'),
+('editor', 'mvc:admin.index.index'),
+('editor', 'mvc:admin.page.*'),
+('editor', 'mvc:application.*'),
+('guest', 'mvc:application.*'),
+('member', 'mvc:admin.index.index'),
+('member', 'mvc:admin.page.add'),
+('member', 'mvc:admin.page.delete:owner'),
+('member', 'mvc:admin.page.edit:owner'),
+('member', 'mvc:admin.page.index'),
+('member', 'mvc:application.*');
 
 -- --------------------------------------------------------
 
@@ -198,14 +220,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   `role_type` varchar(30) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_user_role_idx` (`role_type`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `name`, `surname`, `email`, `active`, `last_login`, `modified`, `role_type`) VALUES
-(1, 'admin', 'c6865cf98b133f1f3de596a4a2894630', 'Admin', 'of Universe', 'tucorreo@gmail.com', 1, NULL, '2014-07-01 20:47:24', 'admin');
+(1, 'admin', 'c6865cf98b133f1f3de596a4a2894630', 'Admin', 'of Universe', 'tucorreo@gmail.com', 1, NULL, '2014-07-01 20:47:24', 'admin'),
+(2, 'pepito', 'c6865cf98b133f1f3de596a4a2894630', 'Pepito', 'Linuxero', 'pepito@hotmail.com', 1, '2014-08-04 00:00:00', '2014-08-04 00:00:00', 'editor');
 
 --
 -- Restricciones para tablas volcadas
@@ -225,11 +248,11 @@ ALTER TABLE `node`
   ADD CONSTRAINT `fk_node_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `role_resource`
+-- Filtros para la tabla `role_permission`
 --
-ALTER TABLE `role_resource`
-  ADD CONSTRAINT `fk_role_has_resource_resource1` FOREIGN KEY (`resource_id`) REFERENCES `resource` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_role_has_resource_role1` FOREIGN KEY (`role_type`) REFERENCES `role` (`type`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `role_permission`
+  ADD CONSTRAINT `fk_role_permission_role1` FOREIGN KEY (`role_type`) REFERENCES `role` (`type`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_role_permission_permission1` FOREIGN KEY (`permission_resource`) REFERENCES `permission` (`resource`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `user`
