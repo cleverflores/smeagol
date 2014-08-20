@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
+    "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" version="XHTML+RDFa 1.0">
+    <head>
+        <!-- this styles only adds some repairs on idevices  -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+            <?php echo $this->headTitle("Smeagol CMS"); ?>
+            <?php if ($is_login) { ?>
+                <?php echo $this->headLink()->appendStylesheet($this->basePath() . '/admin/css/admin-style.css'); ?>
+            <?php } ?>
+            <?php if ($is_front) { ?>
+            <?php } else { ?>
+                <?php echo $this->headScript()->prependFile($this->basePath() . '/jquery-1.11.1.min.js'); ?>
+            <?php } ?>
+
+            <!-- this styles only adds some repairs on idevices  -->
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+                <!-- Google fonts - witch you want to use - (rest you can just remove) -->
+                <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+
+                    <!--[if lt IE 9]>
+                                <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+                        <![endif]-->
+
+                    <!-- ######### CSS STYLES ######### -->
+
+                    <link rel="stylesheet" href="/css/reset.css" type="text/css" />
+                    <link rel="stylesheet" href="/css/style.css" type="text/css" />
+
+                    <!-- responsive devices styles -->
+                    <link rel="stylesheet" media="screen" href="/css/responsive-leyouts.css" type="text/css" />
+
+
+                    <!-- just remove the below comments witch color skin you want to use -->
+                    <!--<link rel="stylesheet" href="/css/colors/orange.css" />-->
+                    <!--<link rel="stylesheet" href="/css/colors/lightgreen.css" />-->
+                    <!--<link rel="stylesheet" href="/css/colors/blue.css" />-->
+                    <!--<link rel="stylesheet" href="/css/colors/green.css" />-->
+                    <!--<link rel="stylesheet" href="/css/colors/red.css" />-->
+                    <!--<link rel="stylesheet" href="/css/colors/cyan.css" />-->
+                    <!--<link rel="stylesheet" href="/css/colors/purple.css" />-->
+                    <!--<link rel="stylesheet" href="/css/colors/yellow.css" />-->
+                    <!--<link rel="stylesheet" href="/css/colors/brown.css" />-->
+
+
+
+                    <!-- just remove the below comments witch bg patterns you want to use -->
+
+                    <!--<link rel="stylesheet" href="/css/bg-patterns/pattern-default.css" />-->
+                    <!--<link rel="stylesheet" href="/css/bg-patterns/pattern-one.css" />-->
+                    <!--<link rel="stylesheet" href="/css/bg-patterns/pattern-two.css" />-->
+                    <!--<link rel="stylesheet" href="/css/bg-patterns/pattern-three.css" />-->
+                    <!--<link rel="stylesheet" href="/css/bg-patterns/pattern-four.css" />-->
+                    <!--<link rel="stylesheet" href="/css/bg-patterns/pattern-five.css" />-->
+                    <!--<link rel="stylesheet" href="/css/bg-patterns/pattern-six.css" />-->
+                    <!--<link rel="stylesheet" href="/css/bg-patterns/pattern-seven.css" />-->
+                    <!--<link rel="stylesheet" href="/css/bg-patterns/pattern-eight.css" />-->
+                    <!--<link rel="stylesheet" href="/css/bg-patterns/pattern-nine.css" />-->
+
+                    <!-- style switcher -->
+                    <link rel = "stylesheet" media = "screen" href = "/js/style-switcher/color-switcher.css" />
+
+                    <!-- jquery jcarousel -->
+                    <link rel="stylesheet" type="text/css" href="/js/jcarousel/skin.css" />
+
+                    <!-- REVOLUTION SLIDER -->
+                    <link rel="stylesheet" type="text/css" href="/js/revolutionslider/css/fullwidth.css" media="screen" />
+                    <link rel="stylesheet" type="text/css" href="/js/revolutionslider/rs-plugin/css/settings.css" media="screen" />
+
+                    <!-- faqs -->
+                    <link rel="stylesheet" href="/js/accordion/accordion.css" type="text/css" media="all">
+
+        </head>
+        <body>
+                <?php if ($is_login && 1==2) { ?>
+                <div id="menu_div">
+                    <div id="navigation-admin">   
+                        <div id="menu">
+                            <?php echo $this->navigation("admin_menus")->setAcl($this->acl)->setRole($this->role); ?>
+                        </div>
+                    </div>
+                </div>
+                            <?php } ?>      
+                            <div id="login">
+                                <?php if (!$is_login) { ?>                     
+                                    <a href="<?php echo $this->basePath(); ?>/login" title="Login"><span>Login</span></a>
+                                <?php } else { ?>                
+                                    <a href="<?php echo $this->basePath(); ?>/logout" title="Logout"><span>Logout</span></a>
+                                <?php } ?>
+                            </div>		
+                            <br/><br/>
+                            <div id="navigation">   
+                                <?php echo $this->navigation("primary_menus")->setAcl($this->acl)->setRole($this->role); ?>
+                            </div>
+                            <?php echo $this->content; ?>
+
+            </body>
+</html>

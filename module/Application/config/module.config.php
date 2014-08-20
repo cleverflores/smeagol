@@ -16,7 +16,7 @@ return array(
                     'route' => '/',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Index',
-                        'action' => 'index',
+                        'action' => 'front',
                     ),
                 ),
             ),
@@ -124,7 +124,7 @@ return array(
         'not_found_template' => 'error/404',
         'exception_template' => 'error/index',
         'template_map' => array(
-            'layout/layout' => __DIR__ . '/../view/layout/layout.phtml',
+            'layout/layout' => __DIR__ . '/../view/layout/layout.phtml',            
             'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'error/404' => __DIR__ . '/../view/error/404.phtml',
             'error/index' => __DIR__ . '/../view/error/index.phtml',
@@ -140,16 +140,19 @@ return array(
         'resolver_configs' => array(
             'paths' => array(
                 __DIR__ . '/../public', // public del module Application
-                __DIR__ . '/../../../themes/enterprise/css/images',
+                __DIR__ . '/../../../themes/hostingycloud/css/',
+                __DIR__ . '/../../../themes/hostingycloud/images/',
+                __DIR__ . '/../../../themes/hostingycloud/js/',
+                __DIR__ . '/../../../themes/hostingycloud/color/',
+            ),
+            'aliases' => array(
+                'themes/hostingycloud/css/' => __DIR__ . '/../../../themes/hostingycloud/css/',
+                'themes/hostingycloud/images/' => __DIR__ . '/../../../themes/hostingycloud/images/',
+                'themes/hostingycloud/js/' => __DIR__ . '/../../../themes/hostingycloud/js/',
+                'themes/hostingycloud/color/' => __DIR__ . '/../../../themes/hostingycloud/color/',
             ),
             // este mapeo puede ser dinamico desde base de datos o recorriendo el directorio
             'map' => array(
-                'themes/enterprise/css/style.css' => __DIR__ . '/../../../themes/enterprise/css/style.css',
-                'themes/enterprise/css/ie6.css' => __DIR__ . '/../../../themes/enterprise/css/ie6.css',
-                'themes/enterprise/js/jquery-1.4.2.js' => __DIR__ . '/../../../themes/enterprise/js/jquery-1.4.2.js',
-                'themes/enterprise/js/jquery.jcarousel.js' => __DIR__ . '/../../../themes/enterprise/js/jquery.jcarousel.js',
-                'themes/enterprise/js/jquery.pngFix.js' => __DIR__ . '/../../../themes/enterprise/js/jquery.pngFix.js',
-                'themes/enterprise/js/js-fnc.js' => __DIR__ . '/../../../themes/enterprise/js/js-fnc.js',
                 'js/login.js' => __DIR__ . '/../public/login.js',
             ),
         ),
@@ -161,6 +164,11 @@ return array(
                 ),
             ),
         ),
+    ),
+    'smeagol_options' => array(
+        'theme' => 'hostingycloud',
+        'theme_layout' => 'hostingycloud/layout',
+        'theme_layout_clean' => 'hostingycloud/layout-clean',
     ),
     // Placeholder for console routes
     'console' => array(

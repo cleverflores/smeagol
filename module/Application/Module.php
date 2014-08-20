@@ -210,7 +210,8 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface {
                 $is_front = true;
             }
 // decide which theme to use by get parameter
-            $layout = 'enterprise/layout';
+            $config = $this->getConfig();
+            $layout = $config['smeagol_options']['theme_layout'];
             $e->getViewModel()->setTemplate($layout);
             $e->getViewModel()->setVariable("is_login", $is_login);
             $e->getViewModel()->setVariable("is_front", $is_front);

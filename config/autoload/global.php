@@ -26,7 +26,7 @@ return array(
         )
     ),
     'navigation' => array(
-        'admin' => array(),      // Menus de Administracion
-        'default' => array(),    // Menus Primarios
-    ),
+        'admin' => array(), // Menus de Administracion
+        'default' => array(), // Menus Primarios
+    ), 
 );

@@ -12,16 +12,20 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Zend\View\View;
 
 class IndexController extends AbstractActionController {
 
     // agregamos este atributo
     protected $nodeTable;
 
-    public function indexAction() {
-        return new ViewModel(array(
+    public function frontAction() {
+        $view =  new ViewModel(array(
             'noticias' => $this->getNodeTable()->getNoticiasFront(),
         ));
+        $c = $this->getServiceLocator()->get("Config");        
+        $view->setTemplate($c['smeagol_options']['theme']."/front.phtml");
+        return $view;
     }
 
     public function nodeAction() {

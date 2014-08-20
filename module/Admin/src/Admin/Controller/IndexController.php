@@ -28,7 +28,9 @@ class IndexController extends AbstractActionController
    
     public function elfinderAction() {
 		// Definimos el layout-clean
-    	$layout = 'enterprise/layout-clean';
+        $config = $this->getServiceLocator()->get('Config');
+        
+    	//$layout = $this->getServiceLocator()->get('config') 'enterprise/layout-clean';
     	$this->layout($layout);
     }
     
