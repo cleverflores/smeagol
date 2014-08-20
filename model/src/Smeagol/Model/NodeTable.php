@@ -48,4 +48,31 @@ class NodeTable {
         return $row;
     }
 
+    public function saveNode($node) {
+        $data = array(
+            'content' => $node->content,
+            'title' => $node->title,
+            'url' => $node->url,
+            'node_type_id' => $node->node_type_id,
+            'user_id' => $node->user_id,
+            'created' => $node->created,
+            'modified' => $node->modified,
+        );
+
+        $id = (int) $node->id;
+        if ($id == 0) {
+            $this->tableGateway->insert($data);
+        } else {
+            if ($this->getPage($id)) {
+                $this->tableGateway->update($data, array('id' => $id));
+            } else {
+                throw new \Exception('Node does not exist');
+            }
+        }
+    }
+
+    public function deleteNode($id) {
+        $this->tableGateway->delete(array('id' => $id));
+    }
+
 }

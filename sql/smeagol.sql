@@ -1,9 +1,9 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-08-2014 a las 22:51:14
+-- Tiempo de generación: 12-08-2014 a las 22:00:26
 -- Versión del servidor: 5.5.36
 -- Versión de PHP: 5.4.27
 
@@ -96,7 +96,7 @@ INSERT INTO `node` (`id`, `title`, `content`, `url`, `created`, `modified`, `nod
 (5, 'Servicios', '<p>Somos Expertos Programadores y le ofrecemos los siguientes servicios</p>\r\n\r\n<p><a href="/servicios/programacion-web">Programaci&oacute;n web</a>&nbsp;</p>\r\n\r\n<p><a href="/servicios/desarrollo-de-portales">Desarrollo de Portales</a></p>\r\n', 'servicios', '2014-07-17 13:50:18', '2014-07-17 13:50:18', 1, 1),
 (6, 'Desarrollo de Portales', '<p>Creamos portales con smeagol y drupal&nbsp;</p>\r\n', 'servicios/desarrollo-de-portales', '2014-07-17 13:52:35', '2014-07-17 13:52:35', 1, 1),
 (7, 'Soluciones', '<p><img alt="" src="/files/fotos/puesta-de-sol.jpg" style="float:left; height:141px; width:188px" />Hacemos desarrollo de software a medida y contamos con las siguientes soluciones</p>\r\n\r\n<p><a href="/soluciones/smeagolcms">Smeagol CMS</a></p>\r\n\r\n<p><a href="/soluciones/intranets">Intranets</a></p>\r\n', 'soluciones/intranets', '2014-07-17 13:54:35', '2014-08-03 19:41:00', 1, 1),
-(8, 'Soporte', '<p>Brindamos el mejor soporte al mejor precio</p>\r\n\r\n<p>en planes</p>\r\n\r\n<p>8x5</p>\r\n\r\n<p>24x7</p>\r\n', 'soporte', '2014-07-17 13:58:17', '2014-07-17 13:58:17', 1, 1),
+(8, 'Soporte', '<p>Brindamos el mejor soporte al mejor precio</p>\r\n\r\n<p>en planes</p>\r\n\r\n<p>8x5</p>\r\n\r\n<p>24x7</p>\r\n', 'soporte', '2014-07-17 13:58:17', '2014-08-12 21:58:34', 1, 3),
 (9, 'Contactenos', '<p>Cont&aacute;ctenos y no se arrepentir&aacute;</p>\r\n\r\n<p>al fono &nbsp;666-666-666</p>\r\n', 'contactenos', '2014-07-17 13:59:13', '2014-07-17 13:59:13', 1, 1),
 (10, 'Smeagol', '<h1>El mejor CMS en Zend Frammework 2  :D</h1>', 'servicios/desarrollo-de-portales/smeagol', '2014-07-22 08:05:00', NULL, 1, 1),
 (11, 'Drupal 7', '<h1> El Mejor CMS del mundo</h1>\r\n<h2> Que lo usa hasta el tío Obama<h2>', 'servicios/desarrollo-de-portales/drupal', '2014-07-22 08:05:00', NULL, 1, 1);
@@ -228,7 +228,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `username`, `password`, `name`, `surname`, `email`, `active`, `last_login`, `modified`, `role_type`) VALUES
 (1, 'admin', 'c6865cf98b133f1f3de596a4a2894630', 'Admin', 'of Universe', 'tucorreo@gmail.com', 1, NULL, '2014-07-01 20:47:24', 'admin'),
-(2, 'pepito', 'c6865cf98b133f1f3de596a4a2894630', 'Pepito', 'Linuxero', 'pepito@hotmail.com', 1, '2014-08-04 00:00:00', '2014-08-04 00:00:00', 'editor');
+(2, 'pepito', 'c6865cf98b133f1f3de596a4a2894630', 'Pepito', 'Linuxero', 'pepito@hotmail.com', 1, '2014-08-04 00:00:00', '2014-08-04 00:00:00', 'editor'),
+(3, 'tuxito', 'c6865cf98b133f1f3de596a4a2894630', 'Tuxito', 'Linuxero', 'tuxito@adiestra.pe', 1, '2014-08-11 17:17:00', '2014-08-11 17:17:00', 'member');
 
 --
 -- Restricciones para tablas volcadas
@@ -251,8 +252,8 @@ ALTER TABLE `node`
 -- Filtros para la tabla `role_permission`
 --
 ALTER TABLE `role_permission`
-  ADD CONSTRAINT `fk_role_permission_role1` FOREIGN KEY (`role_type`) REFERENCES `role` (`type`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_role_permission_permission1` FOREIGN KEY (`permission_resource`) REFERENCES `permission` (`resource`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_role_permission_permission1` FOREIGN KEY (`permission_resource`) REFERENCES `permission` (`resource`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_role_permission_role1` FOREIGN KEY (`role_type`) REFERENCES `role` (`type`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `user`
