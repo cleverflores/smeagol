@@ -4,104 +4,481 @@
 <!--[if IE 9 ]>    <html lang="en-gb" class="isie ie9 no-js"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en-gb" class="no-js"> <!--<![endif]-->
 
-<head>
+    <head>
 
-            <?php echo $this->headTitle("Smeagol CMS"); ?>
-    	
-	
-	<meta charset="utf-8">
-	<meta name="keywords" content="" />
-	<meta name="description" content="" />
-            <?php if ($is_login) { ?>
-                <?php echo $this->headLink()->appendStylesheet($this->basePath() . '/admin/css/admin-style.css'); ?>
-            <?php } ?>
-            <?php if ($is_front) { ?>
-            <?php } else { ?>
-                <?php echo $this->headScript()->prependFile($this->basePath() . '/jquery-1.11.1.min.js'); ?>
-            <?php } ?>
-
-            <!-- this styles only adds some repairs on idevices  -->
-            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-                <!-- Google fonts - witch you want to use - (rest you can just remove) -->
-                <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
-
-                    <!--[if lt IE 9]>
-                                <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-                        <![endif]-->
-
-                    <!-- ######### CSS STYLES ######### -->
-
-                    <link rel="stylesheet" href="/themes/hostingycloud/css/reset.css" type="text/css" />
-                    <link rel="stylesheet" href="/themes/hostingycloud/css/style.css" type="text/css" />
-
-                    <!-- responsive devices styles -->
-                    <link rel="stylesheet" media="screen" href="/themes/hostingycloud/css/responsive-leyouts.css" type="text/css" />
+        <?php echo $this->headTitle("Smeagol CMS"); ?>
 
 
-                    <!-- just remove the below comments witch color skin you want to use -->
-                    <!--<link rel="stylesheet" href="/themes/hostingycloud/css/colors/orange.css" />-->
-                    <!--<link rel="stylesheet" href="/themes/hostingycloud/css/colors/lightgreen.css" />-->
-                    <!--<link rel="stylesheet" href="/themes/hostingycloud/css/colors/blue.css" />-->
-                    <!--<link rel="stylesheet" href="/themes/hostingycloud/css/colors/green.css" />-->
-                    <!--<link rel="stylesheet" href="/themes/hostingycloud/css/colors/red.css" />-->
-                    <!--<link rel="stylesheet" href="/themes/hostingycloud/css/colors/cyan.css" />-->
-                    <!--<link rel="stylesheet" href="/themes/hostingycloud/css/colors/purple.css" />-->
-                    <!--<link rel="stylesheet" href="/themes/hostingycloud/css/colors/yellow.css" />-->
-                    <!--<link rel="stylesheet" href="/themes/hostingycloud/css/colors/brown.css" />-->
+        <meta charset="utf-8">
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <?php if ($is_login) { ?>
+            <?php echo $this->headLink()->appendStylesheet($this->basePath() . '/admin/css/admin-style.css'); ?>
+        <?php } ?>
+        <?php if ($is_front) { ?>
+        <?php } else { ?>
+            <?php echo $this->headScript()->prependFile($this->basePath() . '/jquery-1.11.1.min.js'); ?>
+        <?php } ?>
+
+        <!-- this styles only adds some repairs on idevices  -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <!-- Google fonts - witch you want to use - (rest you can just remove) -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+
+        <!--[if lt IE 9]>
+                    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+
+        <!-- ######### CSS STYLES ######### -->
+
+        <link rel="stylesheet" href="/themes/hostingycloud/css/reset.css" type="text/css" />
+        <link rel="stylesheet" href="/themes/hostingycloud/css/style.css" type="text/css" />
+
+        <!-- responsive devices styles -->
+        <link rel="stylesheet" media="screen" href="/themes/hostingycloud/css/responsive-leyouts.css" type="text/css" />
+
+
+        <!-- just remove the below comments witch color skin you want to use -->
+        <!--<link rel="stylesheet" href="/themes/hostingycloud/css/colors/orange.css" />-->
+        <!--<link rel="stylesheet" href="/themes/hostingycloud/css/colors/lightgreen.css" />-->
+        <!--<link rel="stylesheet" href="/themes/hostingycloud/css/colors/blue.css" />-->
+        <!--<link rel="stylesheet" href="/themes/hostingycloud/css/colors/green.css" />-->
+        <!--<link rel="stylesheet" href="/themes/hostingycloud/css/colors/red.css" />-->
+        <!--<link rel="stylesheet" href="/themes/hostingycloud/css/colors/cyan.css" />-->
+        <!--<link rel="stylesheet" href="/themes/hostingycloud/css/colors/purple.css" />-->
+        <!--<link rel="stylesheet" href="/themes/hostingycloud/css/colors/yellow.css" />-->
+        <!--<link rel="stylesheet" href="/themes/hostingycloud/css/colors/brown.css" />-->
 
 
 
-                    <!-- just remove the below comments witch bg patterns you want to use -->
+        <!-- just remove the below comments witch bg patterns you want to use -->
 
-                    <!--<link rel="stylesheet" href="/themes/hostingycloud/css/bg-patterns/pattern-default.css" />-->
-                    <!--<link rel="stylesheet" href="/themes/hostingycloud/css/bg-patterns/pattern-one.css" />-->
-                    <!--<link rel="stylesheet" href="/themes/hostingycloud/css/bg-patterns/pattern-two.css" />-->
-                    <!--<link rel="stylesheet" href="/themes/hostingycloud/css/bg-patterns/pattern-three.css" />-->
-                    <!--<link rel="stylesheet" href="/themes/hostingycloud/css/bg-patterns/pattern-four.css" />-->
-                    <!--<link rel="stylesheet" href="/themes/hostingycloud/css/bg-patterns/pattern-five.css" />-->
-                    <!--<link rel="stylesheet" href="/themes/hostingycloud/css/bg-patterns/pattern-six.css" />-->
-                    <!--<link rel="stylesheet" href="/themes/hostingycloud/css/bg-patterns/pattern-seven.css" />-->
-                    <!--<link rel="stylesheet" href="/themes/hostingycloud/css/bg-patterns/pattern-eight.css" />-->
-                    <!--<link rel="stylesheet" href="/themes/hostingycloud/css/bg-patterns/pattern-nine.css" />-->
+        <!--<link rel="stylesheet" href="/themes/hostingycloud/css/bg-patterns/pattern-default.css" />-->
+        <!--<link rel="stylesheet" href="/themes/hostingycloud/css/bg-patterns/pattern-one.css" />-->
+        <!--<link rel="stylesheet" href="/themes/hostingycloud/css/bg-patterns/pattern-two.css" />-->
+        <!--<link rel="stylesheet" href="/themes/hostingycloud/css/bg-patterns/pattern-three.css" />-->
+        <!--<link rel="stylesheet" href="/themes/hostingycloud/css/bg-patterns/pattern-four.css" />-->
+        <!--<link rel="stylesheet" href="/themes/hostingycloud/css/bg-patterns/pattern-five.css" />-->
+        <!--<link rel="stylesheet" href="/themes/hostingycloud/css/bg-patterns/pattern-six.css" />-->
+        <!--<link rel="stylesheet" href="/themes/hostingycloud/css/bg-patterns/pattern-seven.css" />-->
+        <!--<link rel="stylesheet" href="/themes/hostingycloud/css/bg-patterns/pattern-eight.css" />-->
+        <!--<link rel="stylesheet" href="/themes/hostingycloud/css/bg-patterns/pattern-nine.css" />-->
 
-                    <!-- style switcher -->
-                    <link rel = "stylesheet" media = "screen" href = "/themes/hostingycloud/js/style-switcher/color-switcher.css" />
+        <!-- style switcher -->
+        <link rel = "stylesheet" media = "screen" href = "/themes/hostingycloud/js/style-switcher/color-switcher.css" />
 
-                    <!-- jquery jcarousel -->
-                    <link rel="stylesheet" type="text/css" href="/themes/hostingycloud/js/jcarousel/skin.css" />
+        <!-- jquery jcarousel -->
+        <link rel="stylesheet" type="text/css" href="/themes/hostingycloud/js/jcarousel/skin.css" />
 
-                    <!-- REVOLUTION SLIDER -->
-                    <link rel="stylesheet" type="text/css" href="/themes/hostingycloud/js/revolutionslider/css/fullwidth.css" media="screen" />
-                    <link rel="stylesheet" type="text/css" href="/themes/hostingycloud/js/revolutionslider/rs-plugin/css/settings.css" media="screen" />
+        <!-- REVOLUTION SLIDER -->
+        <link rel="stylesheet" type="text/css" href="/themes/hostingycloud/js/revolutionslider/css/fullwidth.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="/themes/hostingycloud/js/revolutionslider/rs-plugin/css/settings.css" media="screen" />
 
-                    <!-- faqs -->
-                    <link rel="stylesheet" href="/themes/hostingycloud/js/accordion/accordion.css" type="text/css" media="all">
+        <!-- faqs -->
+        <link rel="stylesheet" href="/themes/hostingycloud/js/accordion/accordion.css" type="text/css" media="all">
 
-        </head>
-        <body>
-            <!--
-                <?php if ($is_login) { ?>
+    </head>
+    <body>
+        <!--
+        <?php if ($is_login) { ?>
                 <div id="menu_div">
                     <div id="navigation-admin">   
                         <div id="menu">
-                            <?php echo $this->navigation("admin_menus")->setAcl($this->acl)->setRole($this->role); ?>
+            <?php echo $this->navigation("admin_menus")->setAcl($this->acl)->setRole($this->role); ?>
                         </div>
                     </div>
                 </div>
-                <?php } ?>      
-                           <div id="login">
-                                <?php if (!$is_login) { ?>                     
+        <?php } ?>      
+                       <div id="login">
+        <?php if (!$is_login) { ?>                     
                                     <a href="<?php echo $this->basePath(); ?>/login" title="Login"><span>Login</span></a>
-                                <?php } else { ?>                
+        <?php } else { ?>                
                                     <a href="<?php echo $this->basePath(); ?>/logout" title="Logout"><span>Logout</span></a>
-                                <?php } ?>
-                            </div>		
-                            <br/><br/>
-                            <div id="navigation">   
-                                <?php echo $this->navigation("primary_menus")->setAcl($this->acl)->setRole($this->role); ?>
-                            </div>
-            -->
-                            <?php echo $this->content; ?>
+        <?php } ?>
+                        </div>		
+                        <br/><br/>
+                        <div id="navigation">   
+        <?php echo $this->navigation("primary_menus")->setAcl($this->acl)->setRole($this->role); ?>
+                        </div>
+        -->
+        <div class="site_wrapper">
+            <div class="container_full">
 
-            </body>
+                <div class="top_links">
+                    <div class="container">
+
+                        <div class="date_wrap">
+                            <script type="text/javascript">
+                                var mydate = new Date()
+                                var year = mydate.getYear()
+                                if (year < 1000)
+                                    year += 1900
+                                var day = mydate.getDay()
+                                var month = mydate.getMonth()
+                                var daym = mydate.getDate()
+                                if (daym < 10)
+                                    daym = "0" + daym
+                                var montharray = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
+                                document.write("<b class='date'>" + montharray[month] + " " + daym + ", " + year + "</b>")
+                            </script>
+                        </div><!-- end date -->
+
+                        <div class="top_contact_info">
+                            <ul class="tci_list">
+                                <li class="chat"><a href="#">live chat</a></li>
+                                <li class="email"><a href="mailto:gsrthemes9@gmail.com">name@company.com</a></li>
+                                <li class="phone">1234-567-89000</li>
+                                <li><a href="#"><img src="/themes/hostingycloud/images/top_si1.png" alt="" /></a></li>
+                                <li><a href="#"><img src="/themes/hostingycloud/images/top_si2.png" alt="" /></a></li>
+                                <li><a href="#"><img src="/themes/hostingycloud/images/top_si3.png" alt="" /></a></li>
+                                <li><a href="#"><img src="/themes/hostingycloud/images/top_si4.png" alt="" /></a></li>
+                                <li><a href="#"><img src="/themes/hostingycloud/images/top_si5.png" alt="" /></a></li>
+                                <li class="country"><a href="#">Country:</a></li>
+                                <li class="country_select">
+                                    <select name="">
+                                        <option value="unitedstates">United States</option>
+                                        <option value="saab">United Kingdom</option>
+                                        <option value="opel">Australia</option>
+                                        <option value="audi">Germany</option>
+                                    </select>
+                                </li>  
+                            </ul>
+                        </div><!-- end top contact info -->
+
+
+                    </div>
+                </div><!-- end top links -->
+
+
+                <div class="top_section">
+
+                    <div class="container">
+
+                        <div id="logo"><a href="index.html" class="site_logo"><h1>Aox<i>Host</i></h1></a></div><!-- end logo -->
+
+                        <nav id="access" class="access" role="navigation">
+
+                            <div id="menu" class="menu">
+
+                                <?php echo $this->navigation("primary_menus")->setAcl($this->acl)->setRole($this->role); ?>
+
+                            </div>
+
+                        </nav>
+
+
+                    </div> 
+
+                </div>
+
+                <div class="top_shadow"></div><!-- end shadow -->
+
+            </div><!-- end top -->
+            <?php if ($is_front) { ?>
+                <?php echo $this->content; ?>
+            <?php } else { ?>
+              <div class="page_title">
+
+	<div class="container">
+		<div class="leaft_title"><h1>Professional Hosting</h1></div>
+        <div class="reght_pagenation"><a href="index.html">Home</a> <i>/</i> <a href="#">Web Hosting</a> <i>/</i> Professional Hosting</div>
+	</div>
+    
+</div><!-- end page title -->
+
+<div class="clearfix"></div>
+
+<div class="container">
+
+	<div class="content_fullwidth">
+    
+    	<div class="hosting_page_plan_main">
+
+                    <?php echo $this->content; ?>
+            
+        </div>
+        </div></div>
+
+            <?php } ?>
+
+
+            <!-- Footer
+            ======================================= -->
+
+            <div id="footer">
+
+                <div class="container">
+
+                    <div class="column">
+
+                        <h2>About AOX</h2>
+                        <p>All the you need to be sure there isn't anything embarr assing hiddens the middle text lorempsum generators on the Internet tend to the repeat predefined chunks as necessary, making this the first true generator on the internet versions have evolved over the years.</p>
+
+                    </div><!-- end about -->
+
+                    <div class="column">
+
+                        <h2>Recent blogs</h2>
+
+                        <ul class="recent_blogs">
+
+                            <li>
+                                <img src="/themes/hostingycloud/images/post-simg7.jpg" alt="" />
+                                <a href="#">Internet repeat define chunks</a>
+                                <i>June 27, 2013</i>
+                            </li>
+                            <li>
+                                <img src="/themes/hostingycloud/images/post-simg8.jpg" alt="" />
+                                <a href="#">Majority have super ateration</a>
+                                <i>June 26, 2013</i>
+                            </li>
+                            <li class="last">
+                                <img src="/themes/hostingycloud/images/post-simg9.jpg" alt="" />
+                                <a href="#">Many desktop push packages</a>
+                                <i>June 25, 2013</i>
+                            </li>
+                        </ul>
+
+                    </div><!-- end recent blogs -->
+
+                    <div class="column">
+
+                        <h2>Support &amp; Help</h2>
+
+                        <ul class="list">
+                            <li><a href="#">Support &amp; FAQ</a></li>
+                            <li><a href="#">Knowledge Base</a></li>
+                            <li><a href="#">E-mail our Support Team</a></li>
+                            <li><a href="#">My Account &amp; Sign Up</a></li>
+                            <li><a href="#">Submit Ticket</a></li>
+                            <li><a href="#">Video Tutorials</a></li>
+                            <li><a href="#">Hosting Industry News</a></li>
+                        </ul>
+
+                    </div><!-- end support links -->
+
+                    <div class="column">
+
+                        <h2>Contact us</h2>
+
+                        <ul class="address-liste">
+                            <li>909 Marmora Cross Road,<br />Glassgow, Seattle,<br />Washington 98122-1090</li>
+                            <li class="icon2">1234-567-89000</li>
+                            <li class="icon3">0123-4567-8900</li>
+                            <li class="icon4"><a href="mailto:gsrthemes9@gmail.com">mail@company.com</a></li>
+                            <li class="icon4"><a href="mailto:gsrthemes9@gmail.com">sales@company.com</a></li>
+                        </ul>
+
+                    </div><!-- end address -->
+
+                    <div class="column last">
+
+                        <h2>Fallow us</h2>
+
+                        <ul class="social_list"> 
+                            <li><a href="#"><img src="/themes/hostingycloud/images/social-icon1.png" alt="" /></a></li>
+                            <li><a href="#"><img src="/themes/hostingycloud/images/social-icon2.png" alt="" /></a></li>
+                            <li><a href="#"><img src="/themes/hostingycloud/images/social-icon3.png" alt="" /></a></li>
+                            <li><a href="#"><img src="/themes/hostingycloud/images/social-icon4.png" alt="" /></a></li>
+                            <li><a href="#"><img src="/themes/hostingycloud/images/social-icon5.png" alt="" /></a></li>
+                            <li><a href="#"><img src="/themes/hostingycloud/images/social-icon6.png" alt="" /></a></li>
+                            <li><a href="#"><img src="/themes/hostingycloud/images/social-icon7.png" alt="" /></a></li>
+                            <li><a href="#"><img src="/themes/hostingycloud/images/social-icon8.png" alt="" /></a></li>
+                        </ul>
+
+                        <div class="clearfix"></div>
+
+                        <div class="live_chat"><a href="#"><img src="/themes/hostingycloud/images/chat.png" alt="" /><h2>live chat</h2></a></div>
+
+                    </div><!-- end socails -->
+
+                </div>
+
+                <div class="clearfix"></div>
+                <div class="mar_top2"></div>
+
+                <div class="container">
+
+                    <div class="h_column_area">
+
+                        <div class="newsletter">
+
+                            <img src="/themes/hostingycloud/images/newsletter-icon.png" alt="" class="image_left1" /><h3>Newsletter<br />Sign up</h3>
+
+                            <form method="get" action="index.html">   
+                                <input class="enter_email_input" name="samplees" id="samplees" value="Enter your email address" onFocus="if (this.value == 'Enter your email address') {
+                                                    this.value = '';
+                                                }" onBlur="if (this.value == '') {
+                                                            this.value = 'Enter your email address';
+                                                        }" type="text">
+                                <input name="" value="subscribe" class="input_submit" type="submit">
+                            </form>
+
+                        </div><!-- end newsletter sign up -->
+
+
+                        <div class="clients">
+
+                            <h3>Our Clients <br />Partners</h3>
+
+                            <ul class="clients_list">
+                                <li><img src="/themes/hostingycloud/images/client-logo1.png" alt="" /></li>
+                                <li><img src="/themes/hostingycloud/images/client-logo2.png" alt="" /></li>
+                                <li><img src="/themes/hostingycloud/images/client-logo3.png" alt="" /></li>
+                            </ul>
+
+                        </div><!-- end client logos -->
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="copyright_info">
+
+                <div class="container">
+
+                    <div class="one_half">
+                        <span><a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a> | <a href="#">Copyright</a> | <a href="#">Site Map</a></span>
+
+                    </div>
+
+                    <div class="one_half last"><b>@ 2013 AOX Webhosting | All Rights Reserved<sup>TM</sup></b></div>
+
+
+
+                </div>
+
+            </div><!-- end copyright info --> 
+            <a href="#" class="scrollup">Scroll</a><!-- end scroll to top of the page-->
+
+
+        </div>    
+
+
+
+        <!-- ######### JS FILES ######### -->
+        <!-- get jQuery from the google apis -->
+        <script type="text/javascript" src="/themes/hostingycloud/js/universal/jquery.js"></script>
+
+        <!-- style switcher -->
+        <script src="/themes/hostingycloud/js/style-switcher/jquery-1.js"></script>
+        <script src="/themes/hostingycloud/js/style-switcher/styleselector.js"></script>
+
+        <!-- main menu -->
+        <script type="text/javascript" src="/themes/hostingycloud/js/mainmenu/ddsmoothmenu.js"></script>
+        <script type="text/javascript" src="/themes/hostingycloud/js/mainmenu/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="/themes/hostingycloud/js/mainmenu/selectnav.js"></script>
+
+        <!-- jquery jcarousel -->
+        <script type="text/javascript" src="/themes/hostingycloud/js/jcarousel/jquery.jcarousel.min.js"></script>
+
+        <!-- REVOLUTION SLIDER -->
+        <script type="text/javascript" src="/themes/hostingycloud/js/revolutionslider/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+        <script type="text/javascript" src="/themes/hostingycloud/js/revolutionslider/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+
+        <script type="text/javascript" src="/themes/hostingycloud/js/mainmenu/scripts.js"></script>
+
+
+        <!-- scroll up -->
+        <script type="text/javascript">
+                                                    $(document).ready(function() {
+
+                                                        $(window).scroll(function() {
+                                                            if ($(this).scrollTop() > 100) {
+                                                                $('.scrollup').fadeIn();
+                                                            } else {
+                                                                $('.scrollup').fadeOut();
+                                                            }
+                                                        });
+
+                                                        $('.scrollup').click(function() {
+                                                            $("html, body").animate({scrollTop: 0}, 500);
+                                                            return false;
+                                                        });
+
+                                                    });
+        </script>
+
+
+        <!-- jquery jcarousel -->
+        <script type="text/javascript">
+
+            jQuery(document).ready(function() {
+                jQuery('#mycarousel').jcarousel();
+            });
+
+            jQuery(document).ready(function() {
+                jQuery('#mycarouseltwo').jcarousel();
+            });
+
+        </script>
+
+        <script type="text/javascript" src="/themes/hostingycloud/js/accordion/custom.js"></script>
+
+
+        <script type="text/javascript">
+
+            var tpj = jQuery;
+            tpj.noConflict();
+
+            tpj(document).ready(function() {
+
+                if (tpj.fn.cssOriginal != undefined)
+                    tpj.fn.css = tpj.fn.cssOriginal;
+
+                tpj('.fullwidthbanner').revolution(
+                        {
+                            delay: 9000,
+                            startwidth: 1000,
+                            startheight: 500,
+                            onHoverStop: "on", // Stop Banner Timet at Hover on Slide on/off
+
+                            thumbWidth: 100, // Thumb With and Height and Amount (only if navigation Tyope set to thumb !)
+                            thumbHeight: 50,
+                            thumbAmount: 3,
+                            hideThumbs: 200,
+                            navigationType: "none", // bullet, thumb, none
+                            navigationArrows: "solo", // nexttobullets, solo (old name verticalcentered), none
+
+                            navigationStyle: "round", // round,square,navbar,round-old,square-old,navbar-old, or any from the list in the docu (choose between 50+ different item), custom
+
+
+                            navigationHAlign: "right", // Vertical Align top,center,bottom
+                            navigationVAlign: "bottom", // Horizontal Align left,center,right
+                            navigationHOffset: 50,
+                            navigationVOffset: 55,
+                            soloArrowLeftHalign: "left",
+                            soloArrowLeftValign: "center",
+                            soloArrowLeftHOffset: 0,
+                            soloArrowLeftVOffset: 0,
+                            soloArrowRightHalign: "right",
+                            soloArrowRightValign: "center",
+                            soloArrowRightHOffset: 0,
+                            soloArrowRightVOffset: 0,
+                            touchenabled: "on", // Enable Swipe Function : on/off
+
+
+
+                            stopAtSlide: -1, // Stop Timer if Slide "x" has been Reached. If stopAfterLoops set to 0, then it stops already in the first Loop at slide X which defined. -1 means do not stop at any slide. stopAfterLoops has no sinn in this case.
+                            stopAfterLoops: 0, // Stop Timer if All slides has been played "x" times. IT will stop at THe slide which is defined via stopAtSlide:x, if set to -1 slide never stop automatic
+
+
+
+                            fullWidth: "on",
+                            shadow: 0								//0 = no Shadow, 1,2,3 = 3 Different Art of Shadows -  (No Shadow in Fullwidth Version !)
+
+                        });
+
+
+
+
+            });
+        </script>
+
+    </body>
 </html>
