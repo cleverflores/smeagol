@@ -22,7 +22,7 @@
     line-height: 27px;
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
-    text-transform: none;
+    text-transform: uppercase;
     font-size: 34px;
     color: #25aae2;
 }
@@ -31,7 +31,7 @@
     color: #454545;
     font-style: normal;
     font-weight: normal;
-    text-transform:none;
+    text-transform:lowercase;
 }
 
 

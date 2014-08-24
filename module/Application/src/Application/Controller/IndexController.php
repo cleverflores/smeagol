@@ -36,9 +36,12 @@ class IndexController extends AbstractActionController {
 
         $node = $this->getNodeTable()->getNode($id);
 
-        return new ViewModel(array(
+        $view = new ViewModel(array(
             'node' => $node
         ));
+        $c = $this->getServiceLocator()->get("Config");        
+        $view->setTemplate($c['smeagol_options']['theme']."/node.phtml");
+        return $view;
     }
 
     // Agregamos este método
