@@ -99,6 +99,20 @@ return array(
             'primary_menus' => 'Application\Navigation\Service\PrimaryMenus',
         ),
     ),
+    'doctrine' => array(
+        'driver' => array(
+            'smeagol_modeldb' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => array(__DIR__ . '/../../../model/src/Smeagol/ModelDB')
+            ),
+            'orm_default' => array(
+                'drivers' => array(
+                    'Smeagol\ModelDB' => 'smeagol_modeldb'
+                )
+            )
+        )
+    ),
     'translator' => array(
         'locale' => 'en_US',
         'translation_file_patterns' => array(
@@ -124,7 +138,7 @@ return array(
         'not_found_template' => 'error/404',
         'exception_template' => 'error/index',
         'template_map' => array(
-            'layout/layout' => __DIR__ . '/../view/layout/layout.phtml',            
+            'layout/layout' => __DIR__ . '/../view/layout/layout.phtml',
             'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'error/404' => __DIR__ . '/../view/error/404.phtml',
             'error/index' => __DIR__ . '/../view/error/index.phtml',

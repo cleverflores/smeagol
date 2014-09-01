@@ -42,7 +42,19 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface {
         $sm = $app->getServiceManager();
 
         $alias = $sm->get('Application\Router\Alias');
+        
         $nodeTable = $sm->get('Smeagol\Model\NodeTable');
+        $em = $sm->get('Doctrine\ORM\EntityManager');
+        $node = $em->getRepository('Smeagol\ModelDB\Node')->findAll();
+       
+        //$nodes = $node->findAll();
+        print_r($node);
+        /*
+        foreach($nodes as $n){
+            print_r($n);
+        } 
+         * 
+         */       
         $alias->setNodeTable($nodeTable);
 
         $moduleRouteListener = new ModuleRouteListener();

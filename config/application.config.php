@@ -1,10 +1,14 @@
-<?php
+<?php 
 return array(
     // This should be an array of module namespaces used in the application.
     'modules' => array(
         'AssetManager',
         'Application',
         'Admin',
+        'ZendDeveloperTools',
+        'OcraServiceManager',
+        'DoctrineModule',
+        'DoctrineORMModule',
     ),
 
     // These are various options for the listeners attached to the ModuleManager
