@@ -23,13 +23,13 @@ class Alias extends Http\Segment {
 
 
         if ($path !== "/") {
-            $path = substr($path, 1);
-            $node = $nodeTable->getNodeByUrl($path);
+            $path = substr($path, 1); 
+            $node = $nodeTable->findOneBy(array('url'=>$path));
 
             // verificando si se hallo el url en la tabla node y asignandole un ro
-            if (!empty($node)) {
-                if ($path == $node->url) {
-                    $uri->setPath('/node/' . $node->id);
+            if (!empty($node)) {                
+                if ($path == $node->getUrl()) {
+                    $uri->setPath('/node/' . $node->getId());
                     $request->setUri($uri);
                 }
             }

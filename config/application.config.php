@@ -6,7 +6,7 @@ return array(
         'Application',
         'Admin',
         'ZendDeveloperTools',
-        'OcraServiceManager',
+//        'OcraServiceManager',
         'DoctrineModule',
         'DoctrineORMModule',
     ),
